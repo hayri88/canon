@@ -3,20 +3,17 @@ name: Deploy to FTP
 on: [push]
 
 jobs:
-  ftp-deploy:
-    name: Deploy HTML file to FTP
+  build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4.1.6
-    - name: FTP Deploy Action
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+    - name: Checkout
+      uses: actions/checkout@v4.1.6
+
+    - name: FTP Deploy
+      uses: SamKirkland/FTP-Deploy-Action@4.3.5
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: "./"
-        server-dir: "/ttt/"
-
-              - name: Checkout
-                uses: actions/checkout@v4.1.6
-            
+        server-dir: "/bbb/"
